@@ -34,7 +34,7 @@ def player_input():
         return ('O','X')
          
 def place_marker(board,marker,position):
-    board[position-1]=marker[0]
+    board[position]=marker
     
 def win_check(board,mark):
     return ((board[7]==mark and board[8]==mark and board[9]==mark) or 
@@ -45,6 +45,74 @@ def win_check(board,mark):
     (board[7]==mark and board[4]==mark and board[1]==mark) or
     (board[8]==mark and board[5]==mark and board[2]==mark) or
     (board[9]==mark and board[6]==mark and board[3]==mark))
-   
-theBoard = [' '] * 10
-display_board(theBoard)
+
+import random
+def choose_first():
+    playa=str(random.randint(1,2))
+    return playa
+    
+def space_check(board,position):
+    if board[position]==' ':
+        return True
+    else:
+        return False
+
+def full_board_check(board):
+    for i in board:
+        if board[i]==' ':
+            return False
+        else:
+            return True
+def player_choice(board):
+    pos=raw_input('Which position do you want to play? (1-9)')
+    if space_check(board,pos)==True:
+        return pos
+    elif space_check(board,pos)==False:
+        return nan 
+          
+def replay():
+    play_again=raw_input('Do you want to play again? (y/n)')
+    if play_again=='y':
+        return True
+    elif play_again=='n':
+        return False
+    
+print ('Welcome to Tic Tac Toe!')
+
+while True:
+    theBoard = [' '] * 10
+    player1_mark,player2_mark=player_input() 
+    turn=choose_first()
+    print ('Player '+turn+' goes first!')
+    game_on=True
+    
+    while game_on:
+        if turn=='1':
+            #plauer 1 turn
+            display_board(theBoard)
+            pos=player_choice(theBoard)
+            place_marker(thebBoard,player1_mark,pos)
+            
+            if win_check(theBoard,player1_mark)==True:
+                print('You won!)
+                game_on=False
+                
+            else:
+                if full_board_check(theBoard)==False:
+                    turn='2'
+                elif full_board_check(theBoard)==True:
+                    print ('The game is a draw')
+                    break
+        
+        else:
+            #player2 turn
+                    
+            
+            
+        
+    place_marker(board,first,pos)
+
+
+while replay==True:
+    
+        
