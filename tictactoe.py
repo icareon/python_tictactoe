@@ -52,10 +52,8 @@ def choose_first():
     return playa
     
 def space_check(board,position):
-    if board[position]==' ':
-        return True
-    else:
-        return False
+    return board[position]==' '
+
 
 def full_board_check(board):
     for i in board:
@@ -63,6 +61,7 @@ def full_board_check(board):
             return False
         else:
             return True
+            
 def player_choice(board):
     pos=input('Which position do you want to play? (1-9)')
     if space_check(board,pos)==True:
@@ -115,12 +114,12 @@ while True:
             display_board(theBoard)
             pos,avail=player_choice(theBoard)
             if avail==True:
-                place_marker(theBoard,player1_mark,pos)   
+                place_marker(theBoard,player2_mark,pos)   
             else:
                 print('Position already marked')
 
                             
-            if win_check(theBoard,player1_mark)==True:
+            if win_check(theBoard,player2_mark)==True:
                 display_board(theBoard)
                 print('You won!')
                 game_on=False
